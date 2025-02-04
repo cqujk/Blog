@@ -12,6 +12,22 @@ const navItems = [
 ];
 
 export default function Navbar() {
+    const [dragConstraints, setDragConstraints] = useState({
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+    });
+
+    useEffect(() => {
+        // 在客户端运行时设置 dragConstraints
+        setDragConstraints({
+            top: 0,
+            left: 0,
+            right: window.innerWidth - 300,
+            bottom: window.innerHeight - 100,
+        });
+    }, []); // 空依赖数组表示只在组件挂载时运行
     const [isCollapsed, setIsCollapsed] = useState(false);
     const x = useMotionValue(0); // 用于跟踪导航栏的 X 轴位置
     const width = useTransform(x, (value) => {
@@ -41,12 +57,7 @@ export default function Navbar() {
             className="fixed top-4 left-4 right-4 bg-white/90 backdrop-blur-lg rounded-lg shadow-lg z-50 cursor-move"
             style={{ x, width }}
             drag
-            dragConstraints={{
-                top: 0,
-                left: 0,
-                right: window.innerWidth - 300, // 限制拖动范围
-                bottom: window.innerHeight - 100,
-            }}
+            dragConstraints={dragConstraints} // 使用动态设置的 dragConstraints
             dragElastic={0.1} // 拖动弹性
             whileHover={{ scale: 1.02 }} // 悬浮放大
             whileTap={{ scale: 0.98 }} // 点击缩小
