@@ -5,17 +5,144 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --gradient-start: #ff9a9e;
+  --gradient-end: #fad0c4;
+  --particle-color: rgba(255,255,255,0.5);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+/* 暗黑模式适配 */
+
+/*@media (prefers-color-scheme: dark) {*/
+/*  :root {*/
+/*    --background: #0a0a0a;*/
+/*    --foreground: #ededed;*/
+/*  }*/
+/*}*/
 
 body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.glass-panel {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+/* 文字阴影增强可读性 */
+.text-glow {
+  text-shadow: 0 0 10px rgba(14,165,233,0.5);
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+  .glass-panel {
+    backdrop-filter: blur(8px);
+    border-radius: 12px;
+  }
+}
+/* 方案1：动态渐变背景 */
+.animated-gradient {
+  background: linear-gradient(270deg, var(--gradient-start), var(--gradient-end));
+  background-size: 200% 200%;
+  animation: gradientFlow 15s ease infinite;
+}
+
+@keyframes gradientFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+/* 方案2：粒子动画背景 */
+/*.particle-background {*/
+/*  position: relative;*/
+/*  overflow: hidden;*/
+/*}*/
+/* 粒子基础样式 */
+.particle {
+  @apply fixed rounded-full pointer-events-none;
+  background: radial-gradient(
+          circle at 50% 50%,
+          hsl(var(--hue), 95%, 70%) 0%,
+          hsl(calc(var(--hue) + var(--hue-var)), 85%, 60%) 70%,
+          transparent 100%
+  );
+  filter: blur(1px);
+  will-change: transform, opacity;
+  /*z-index: -1; !* 确保粒子在内容层下方 *!*/
+}
+/*@media (prefers-color-scheme: dark) {*/
+/*  .particle {*/
+/*    filter: brightness(1.2) blur(1px);*/
+/*  }*/
+/*.particle {*/
+/*  position: fixed;*/
+/*  border-radius: 50%;*/
+/*  pointer-events: none;*/
+/*  filter: blur(1px);*/
+/*  will-change: transform, opacity;*/
+/*}*/
+/*.particle {*/
+/*  position: absolute;*/
+/*  background: var(--particle-color);*/
+/*  border-radius: 50%;*/
+/*  animation: particleMove linear infinite;*/
+/*}*/
+
+/* 粒子动画定义 */
+/*@keyframes particleMove {*/
+/*  from { transform: translateY(-100vh); }*/
+/*  to { transform: translateY(100vh); }*/
+/*}*/
+/* 粒子动画关键帧 */
+@keyframes particle-move {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.3) rotate(0deg);
+  }
+  30% {
+    opacity: 1;
+    transform: translate(-30%, -70%) scale(0.8) rotate(180deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(50%, 150%) scale(0.1) rotate(360deg);
+  }
+}
+
+/* 硬件加速优化层 */
+.gpu-layer {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+/* 内容容器保护层 */
+.isolate {
+  isolation: isolate; /* 创建新的层叠上下文 */
+}
+
+.bg-light-80 {
+  background-color: rgba(248, 250, 252, 0.8); /* Tailwind bg-light 颜色 */
+}
+
+.backdrop-blur-lg {
+  backdrop-filter: blur(16px); /* 添加玻璃效果 */
+}
+/* 暗黑模式适配 */
+@media (prefers-color-scheme: dark) {
+  .particle {
+    filter: brightness(1.2) blur(1px);
+  }
+}
+/*!* 方案3：视频背景 *!*/
+/*.video-background {*/
+/*  position: fixed;*/
+/*  right: 0;*/
+/*  bottom: 0;*/
+/*  min-width: 100%;*/
+/*  min-height: 100%;*/
+/*  z-index: -1;*/
+/*}*/
