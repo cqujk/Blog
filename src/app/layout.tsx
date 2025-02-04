@@ -4,6 +4,7 @@ import Navbar from '@/components/ui/Navbar';
 import Footer from '@/components/ui/Footer'
 import AnimatedBackground from '@/components/ui/AnimatedBackground';
 import "./globals.css";
+import MotionEffects from '@/components/ui/MotionEffects'
 const inter = Inter({ subsets: ['latin'] });
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -21,6 +22,7 @@ export default function RootLayout({
                 {/* 添加硬件加速层 */}
                 <div className="gpu-layer">
                     <AnimatedBackground />
+                    <MotionEffects /> {/* 新增拖尾特效 */}
                 </div>
                 <div className="relative z-10 isolate">
                     <div className="absolute inset-0 -z-10 bg-light-80 backdrop-blur-lg"/>

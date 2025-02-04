@@ -2,65 +2,35 @@
 @tailwind components;
 @tailwind utilities;
 
+/*:root {*/
+/*  --background: #ffffff;*/
+/*  --foreground: #171717;*/
+/*  --gradient-start: #ff9a9e;*/
+/*  --gradient-end: #fad0c4;*/
+/*  --particle-color: rgba(255,255,255,0.5);*/
+/*}*/
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-  --gradient-start: #ff9a9e;
-  --gradient-end: #fad0c4;
-  --particle-color: rgba(255,255,255,0.5);
+    --background: #0a0a0a; /* 纯黑背景 */
+    --foreground: #e5e5e5; /* 浅灰文字 */
+    --gradient-start: #4f46e5; /* 深蓝紫色 */
+    --gradient-end: #818cf8; /* 亮紫色 */
+    --particle-color: rgba(255,255,255,0.1); /* 微光粒子 */
 }
-
-/* 暗黑模式适配 */
-
-/*@media (prefers-color-scheme: dark) {*/
-/*  :root {*/
-/*    --background: #0a0a0a;*/
-/*    --foreground: #ededed;*/
-/*  }*/
+/*body {*/
+/*  color: var(--foreground);*/
+/*  background: var(--background);*/
+/*  font-family: Arial, Helvetica, sans-serif;*/
 /*}*/
-
+/* 增强暗色模式适配 */
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+    background:
+            linear-gradient(
+                    45deg,
+                    var(--gradient-start),
+                    var(--gradient-end)
+            )
+            var(--background); /* 添加渐变底色 */
 }
-
-.glass-panel {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 16px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-}
-/* 文字阴影增强可读性 */
-.text-glow {
-  text-shadow: 0 0 10px rgba(14,165,233,0.5);
-}
-
-/* 响应式调整 */
-@media (max-width: 768px) {
-  .glass-panel {
-    backdrop-filter: blur(8px);
-    border-radius: 12px;
-  }
-}
-/* 方案1：动态渐变背景 */
-.animated-gradient {
-  background: linear-gradient(270deg, var(--gradient-start), var(--gradient-end));
-  background-size: 200% 200%;
-  animation: gradientFlow 15s ease infinite;
-}
-
-@keyframes gradientFlow {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-/* 方案2：粒子动画背景 */
-/*.particle-background {*/
-/*  position: relative;*/
-/*  overflow: hidden;*/
-/*}*/
 /* 粒子基础样式 */
 .particle {
   @apply fixed rounded-full pointer-events-none;
@@ -72,31 +42,8 @@ body {
   );
   filter: blur(1px);
   will-change: transform, opacity;
-  /*z-index: -1; !* 确保粒子在内容层下方 *!*/
+  z-index: -1; /* 确保粒子在内容层下方 */
 }
-/*@media (prefers-color-scheme: dark) {*/
-/*  .particle {*/
-/*    filter: brightness(1.2) blur(1px);*/
-/*  }*/
-/*.particle {*/
-/*  position: fixed;*/
-/*  border-radius: 50%;*/
-/*  pointer-events: none;*/
-/*  filter: blur(1px);*/
-/*  will-change: transform, opacity;*/
-/*}*/
-/*.particle {*/
-/*  position: absolute;*/
-/*  background: var(--particle-color);*/
-/*  border-radius: 50%;*/
-/*  animation: particleMove linear infinite;*/
-/*}*/
-
-/* 粒子动画定义 */
-/*@keyframes particleMove {*/
-/*  from { transform: translateY(-100vh); }*/
-/*  to { transform: translateY(100vh); }*/
-/*}*/
 /* 粒子动画关键帧 */
 @keyframes particle-move {
   0% {
@@ -137,12 +84,50 @@ body {
     filter: brightness(1.2) blur(1px);
   }
 }
-/*!* 方案3：视频背景 *!*/
-/*.video-background {*/
-/*  position: fixed;*/
-/*  right: 0;*/
-/*  bottom: 0;*/
-/*  min-width: 100%;*/
-/*  min-height: 100%;*/
-/*  z-index: -1;*/
-/*}*/
+
+
+
+
+/* 光标火花特效系统 */
+.cursor-spark {
+  @apply fixed pointer-events-none;
+  border-radius: 50%;
+  background:
+          radial-gradient(
+                  76.32% 76.32% at 31.25% 19.15%,
+                  hsl(var(--hue), 95%, 80%) 0%,
+                  hsl(calc(var(--hue) + 25), 95%, 65%) 70%,
+                  transparent 100%
+          );
+  box-shadow:
+          0 0 12px 1px hsl(var(--hue), 100%, 75%),
+          0 0 24px 2px rgba(255,255,255,0.4);
+  filter: blur(0.8px);
+  transform-origin: center;
+  z-index: 3;
+  mix-blend-mode: normal;
+}
+
+@keyframes spark-emit {
+  0% {
+    opacity: 1;
+    transform:
+            translate(0, 0)
+            scale(1.2)
+            rotate(0deg);
+  }
+  70% {
+    opacity: 0.6;
+    transform:
+            translate(calc(var(--vector-x) * 0.8), calc(var(--vector-y) * 0.8))
+            scale(1.5)
+            rotate(240deg);
+  }
+  100% {
+    opacity: 0;
+    transform:
+            translate(var(--vector-x), var(--vector-y))
+            scale(0.1)
+            rotate(360deg);
+  }
+}

@@ -13,7 +13,7 @@ export default function AnimatedBackground() {
         const particle = document.createElement('div');
         // 2. 随机属性设置
         const size = Math.random() * 4 + 2;       // 粒子大小：2-6px
-        const duration = Math.random() * 3 + 2;   // 动画时长：2-5秒
+        const duration = Math.random()  + 2;   // 动画时长：0-3秒
         //const startX = Math.random() * 100;       // 水平起始位置：0-100%
         // 随机颜色生成
         const baseHue = Math.random() * 360;
@@ -59,13 +59,13 @@ export default function AnimatedBackground() {
         // 动画控制变量
         let animationFrame: number;  // 存储 requestAnimationFrame 返回的ID
         let lastTime = 0;            // 记录上次生成粒子的时间戳
-        const baseInterval = 50;     // 桌面端基础生成间隔（单位：毫秒）
+        const baseInterval = 300;     // 桌面端基础生成间隔（单位：毫秒）
 // 动画循环核心逻辑
         const animate = (timestamp: number) => {
             // 设备检测：当屏幕宽度小于 768px 时视为移动端
             const isMobile = window.innerWidth < 768;
             // 动态间隔调整：移动端延长生成间隔以优化性能
-            const actualInterval = isMobile ? 100 : baseInterval;
+            const actualInterval = isMobile ? 350 : baseInterval;
             // 时间间隔检查：通过时间差控制粒子生成频率
             if (timestamp - lastTime > actualInterval) {
                 createParticle();  // 执行粒子创建逻辑
