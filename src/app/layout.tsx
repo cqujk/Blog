@@ -24,8 +24,11 @@ export default function RootLayout({
                     <AnimatedBackground />
                     <MotionEffects /> {/* 新增拖尾特效 */}
                 </div>
-                <div className="relative z-20 isolate">
-                    <div className="absolute inset-0 -z-10 bg-light-80 backdrop-blur-lg"/>
+                <div className=" z-20 isolate">
+                    {/*<div className="absolute inset-0 -z-10 bg-light-80 backdrop-blur-lg"/>*/}
+                    <div className="absolute inset-0 -z-10 bg-opacity-80 bg-gray-100 backdrop-blur-md">
+                        {/* 这里 bg-opacity-80 设置背景透明度为 80%，bg-gray-100 使用 Tailwind 预设的浅灰色背景 */}
+                    </div>
                     <Navbar/>
                     <main className="pt-16">{children}</main>
                     <Footer/>

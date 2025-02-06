@@ -45,12 +45,12 @@ export default function AnimatedBackground() {
         let animationFrame: number;  // 存储 requestAnimationFrame 返回的ID
         let lastTime = 0;            // 记录上次生成粒子的时间戳
         const isMobile = window.innerWidth < 768;
-        const baseInterval = isMobile ? 350 : 10;
+        const baseInterval = isMobile ? 350 : 300;
 // 动画循环核心逻辑
         const animate = (timestamp: number) => {
             const currentParticles = document.querySelectorAll('.particle').length;
             // 动态调整生成间隔
-            const dynamicInterval = baseInterval + (currentParticles * 5); // 粒子越多，间隔越长
+            const dynamicInterval = baseInterval + (currentParticles * 15); // 粒子越多，间隔越长
             // 时间间隔检查：通过时间差控制粒子生成频率
             if (timestamp - lastTime > dynamicInterval) {
                 createParticle();  // 执行粒子创建逻辑
