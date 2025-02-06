@@ -86,47 +86,65 @@ export default function Navbar() {
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
     };
+    // 生成标题组件
+    const renderTitle = () => {
+        return (
+            <a href="/">
+                {Array.from("Jia.Ke").map((char, index) => (
+                    <span
+                        key={index}
+                        className="rainbow-char"
+                        style={{
+                            animationDelay: `${index * 0.2}s` // 根据字符位置设置动画延迟
+                        }}
+                    >
+                        {char}
+                    </span>
+                ))}
+            </a>
+        );
+    };
+
+    // 生成导航项组件
+    const renderNavItems = () => {
+        return (
+            <div style={{display: 'flex', justifyContent: 'space-around', width: '100%'}}>
+                {navItems.map((item) => (
+                    <a
+                        key={item.name}
+                        href={item.path}
+                        className="text-white hover:text-primary transition-colors"
+                    >
+                        {item.name}
+                    </a>
+                ))}
+            </div>
+        );
+    };
     return (
         <motion.nav
             initial={{y: -100}}
             animate={{y: 0}}
-            className="fixed top-4 left-4 right-4 bg-white/90 backdrop-blur-lg rounded-lg shadow-lg z-50 cursor-move"
-            style={{x, y, width, height, ...backgroundStyle}} // 动态调整宽度和高度
+            className="fixed top-4 left-4 right-4 bg-white/90 backdrop-blur-lg rounded-lg shadow-lg z-50 cursor-move  flex justify-center items-center"
+            style={{
+                x: x,
+                y: y,
+                width: width,
+                height: height,
+                ...backgroundStyle,
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center'
+            }}// 动态调整宽度和高度
             drag
             dragConstraints={dragConstraints} // 使用动态设置的 dragConstraints
             dragElastic={0.1} // 拖动弹性
             whileHover={{scale: 1.02}} // 悬浮放大
             whileTap={{scale: 0.98}} // 点击缩小
         >
-            <div className="h-full w-full flex items-center justify-center p-4">
-                {isCollapsed ? (
-                    <a href="/" className="text-2xl font-bold text-center">
-                        {Array.from("Jia.Ke").map((char, index) => (
-                            <span
-                                key={index}
-                                className="rainbow-char"
-                                style={{
-                                    animationDelay: `${index * 0.2}s` // 根据字符位置设置动画延迟
-                                }}
-                            >
-                                {char}
-                            </span>
-                        ))}
-                    </a>
-                ) : (
-                    <div className="h-full w-full flex justify-center items-center space-x-8">
-                            {navItems.map((item) => (
-                                <a
-                                    key={item.name}
-                                    href={item.path}
-                                    className="text-white hover:text-primary transition-colors"
-                                >
-                                    {item.name}
-                                </a>
-                            ))}
-                     </div>
-                )}
-            </div>
+
+    {isCollapsed ? renderTitle() : renderNavItems()}
+
         </motion.nav>
     );
 }

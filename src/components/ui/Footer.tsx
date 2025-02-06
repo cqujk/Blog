@@ -1,128 +1,62 @@
-// components/ui/Footer.tsx
-'use client';
+import React from "react";
+import { FooterProps } from "./FooterDataType";
 
-import { motion } from 'framer-motion';
-import Link from 'next/link';
-import {
-    // GithubIcon,
-    // LinkedInIcon,
-    // TwitterIcon,
-    EnvelopeIcon,
-} from '@heroicons/react/24/outline';
-
-const socialLinks = [
-    // {
-    //     name: 'GitHub',
-    //     href: 'https://github.com/yourusername',
-    //     icon: GithubIcon,
-    // },
-    // {
-    //     name: 'LinkedIn',
-    //     href: 'https://linkedin.com/in/yourprofile',
-    //     icon: LinkedInIcon,
-    // },
-    // {
-    //     name: 'Twitter',
-    //     href: 'https://twitter.com/yourhandle',
-    //     icon: TwitterIcon,
-    // },
-    {
-        name: 'Email',
-        href: 'mailto:your@email.com',
-        icon: EnvelopeIcon,
-    },
-];
-
-const footerLinks = [
-    { name: 'About', href: '/about' },
-    { name: 'Projects', href: '/projects' },
-    { name: 'Blog', href: '/blog' },
-    { name: 'Contact', href: '/contact' },
-];
-
-export default function Footer() {
-    const currentYear = new Date().getFullYear();
-
+const Footer: React.FC<FooterProps> = ({ links, socialMedia, copyright }) => {
     return (
-        <motion.footer
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="bg-dark text-light py-12 mt-20"
-        >
-            <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex flex-col md:flex-row justify-between gap-8 mb-8">
-                    {/* Branding Section */}
-                    <div className="space-y-4 max-w-sm">
-                        <h3 className="text-2xl font-bold">
-                            Jia<span className="text-primary">.</span>Ke
-                        </h3>
-                        <p className="text-gray-400">
-                            Building digital experiences that combine creativity with technical
-                            excellence.
-                        </p>
+        <footer style={{ backgroundColor: "#1a1a1a", color: "#ffffff", padding: "2rem 0", marginTop: "4rem" }}>
+            <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 1rem" }}>
+                {/* 友情链接和社交媒体链接 */}
+                <div style={{ display: "flex", flexDirection: "column", gap: "2rem", marginBottom: "2rem" }}>
+                    {/* 友情链接 */}
+                    <div style={{ textAlign: "center" }}>
+                        <h3 style={{ fontSize: "1.125rem", fontWeight: "600", margin: "0 0 1rem 0" }}>友情链接</h3>
+                        <ul style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "1rem", margin: 0, padding: 0, listStyle: "none" }}>
+                            {links.map((link, index) => (
+                                <li key={index}>
+                                    <a href={link.url} style={{ color: "#ffffff", textDecoration: "none", transition: "color 0.3s ease" }}>
+                                        {link.title}
+                                    </a>
+                                </li>
+                            ))}
+                        </ul>
                     </div>
 
-                    {/* Quick Links */}
-                    <div className="grid grid-cols-2 gap-8 md:w-1/3">
-                        <div>
-                            <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
-                            <ul className="space-y-2">
-                                {footerLinks.map((link) => (
-                                    <li key={link.name}>
-                                        <Link
-                                            href={link.href}
-                                            className="text-gray-400 hover:text-primary transition-colors"
-                                        >
-                                            {link.name}
-                                        </Link>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-
-                        <div>
-                            <h4 className="text-lg font-semibold mb-4">Connect</h4>
-                            <ul className="space-y-2">
-                                {socialLinks.map((link) => (
-                                    <li key={link.name}>
-                                        <a
-                                            href={link.href}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="flex items-center space-x-2 text-gray-400 hover:text-primary transition-colors"
-                                        >
-                                            <link.icon className="h-5 w-5" />
-                                            <span>{link.name}</span>
-                                        </a>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
+                    {/* 社交媒体链接 */}
+                    <div style={{ textAlign: "center" }}>
+                        <h3 style={{ fontSize: "1.125rem", fontWeight: "600", margin: "0 0 1rem 0" }}>关注我们</h3>
+                        <ul style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "1rem", margin: 0, padding: 0, listStyle: "none" }}>
+                            {socialMedia.map((social, index) => (
+                                <li key={index}>
+                                    <a href={social.url} style={{ color: "#ffffff", textDecoration: "none", transition: "color 0.3s ease" }}>
+                                        {social.name}
+                                    </a>
+                                </li>
+                            ))}
+                        </ul>
                     </div>
                 </div>
 
-                {/* Copyright Section */}
-                <div className="border-t border-gray-800 pt-8 mt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-                    <p className="text-gray-500 text-center">
-                        &copy; {currentYear} John Doe. All rights reserved.
+                {/* 分隔线 */}
+                <hr style={{ border: "none", borderTop: "1px solid #4a5568", margin: "1.5rem 0" }} />
+
+                {/* 版权信息 */}
+                <div style={{ textAlign: "center" }}>
+                    <p style={{ fontSize: "0.875rem", margin: 0 }}>
+                        © {new Date().getFullYear()} {copyright.companyName}. All rights reserved.
                     </p>
-                    <div className="flex space-x-4">
-                        <Link
-                            href="/privacy"
-                            className="text-gray-500 hover:text-primary transition-colors"
-                        >
+                    <p style={{ fontSize: "0.875rem", margin: "0.5rem 0 0" }}>
+                        <a href={copyright.privacyPolicyUrl} style={{ color: "#ffffff", textDecoration: "none", transition: "color 0.3s ease" }}>
                             Privacy Policy
-                        </Link>
-                        <Link
-                            href="/terms"
-                            className="text-gray-500 hover:text-primary transition-colors"
-                        >
+                        </a>{" "}
+                        |{" "}
+                        <a href={copyright.termsOfServiceUrl} style={{ color: "#ffffff", textDecoration: "none", transition: "color 0.3s ease", marginLeft: "0.5rem" }}>
                             Terms of Service
-                        </Link>
-                    </div>
+                        </a>
+                    </p>
                 </div>
             </div>
-        </motion.footer>
+        </footer>
     );
-}
+};
+
+export default Footer;

@@ -4,18 +4,22 @@
 :root {
     --background: #0a0a0a; /* 纯黑背景 */
     --foreground: #e5e5e5; /* 浅灰文字 */
-    --gradient-start: #4f46e5; /* 深蓝紫色 */
-    --gradient-end: #818cf8; /* 亮紫色 */
+    /*--gradient-start: #4f46e5; !* 深蓝紫色 *!*/
+    /*--gradient-end: #818cf8; !* 亮紫色 *!*/
     --particle-color: rgba(255,255,255,0.1); /* 微光粒子 */
 }
 body {
     background:
             linear-gradient(
-                    45deg,
-                    var(--gradient-start),
-                    var(--gradient-end)
+                    180deg,
+                    /*var(--gradient-start),*/
+                    /*var(--gradient-end)*/
+                    /*var(--background),*/
+                    /*var(--foreground)*/
+            blanchedalmond,
+            lightgoldenrodyellow
             )
-            var(--background); /* 添加渐变底色 */
+            /*var(--background); !* 添加渐变底色 *!*/
 }
 /* 粒子基础样式 */
 .particle {
@@ -45,20 +49,6 @@ body {
     transform: translate(50%, 150%) scale(0.1) rotate(360deg);
   }
 }
-/*@keyframes particle-move {*/
-/*    0% {*/
-/*        opacity: 0;*/
-/*        transform: translate(0, 0) scale(0.3) rotate(0deg);*/
-/*    }*/
-/*    30% {*/
-/*        opacity: 1;*/
-/*        transform: translate(100px, -50px) scale(0.8) rotate(180deg);*/
-/*    }*/
-/*    100% {*/
-/*        opacity: 0;*/
-/*        transform: translate(200px, 150px) scale(0.1) rotate(360deg);*/
-/*    }*/
-/*}*/
 /* 硬件加速优化层 */
 .gpu-layer {
   transform: translateZ(0);
