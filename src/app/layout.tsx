@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono,Inter } from "next/font/google";
 import Navbar from '@/components/ui/Navbar';
-import Footer from '@/components/ui/Footer'
+import Footer from '@/components/ui/Footer';
 import AnimatedBackground from '@/components/ui/AnimatedBackground';
 import "./globals.css";
 import MotionEffects from '@/components/ui/MotionEffects'

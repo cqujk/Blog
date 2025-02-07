@@ -8,18 +8,16 @@
     /*--gradient-end: #818cf8; !* 亮紫色 *!*/
     --particle-color: rgba(255,255,255,0.1); /* 微光粒子 */
 }
+
 body {
     background:
             linear-gradient(
                     180deg,
-                    /*var(--gradient-start),*/
-                    /*var(--gradient-end)*/
-                    /*var(--background),*/
-                    /*var(--foreground)*/
-            blanchedalmond,
-            lightgoldenrodyellow
+                    #0f172a 0%,       /* 星空蓝（顶部） */
+                    #1e293b 30%,      /* 深蓝过渡 */
+                    #374151 60%,      /* 中灰过渡 */
+                    #000000 100%      /* 纯黑（底部） */
             )
-            /*var(--background); !* 添加渐变底色 *!*/
 }
 /* 粒子基础样式 */
 .particle {
