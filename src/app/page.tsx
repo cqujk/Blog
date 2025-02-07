@@ -13,19 +13,6 @@ export default function Home() {
         padding: '0 16px'
     };
 
-    const heroSectionStyle = {
-        minHeight: '100vh',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        position: 'relative'
-    };
-
-    const gridLayoutStyle = {
-        display: 'grid',
-        gap: '32px',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))'
-    };
 
     return (
         <>
@@ -460,9 +447,9 @@ export default function Home() {
                                         backgroundColor: '#ffffff',
                                         boxShadow: '0 10px 15px -3px rgba(0,0,0,0.05)',
                                         transition: 'transform 0.3s ease',
-                                        ':hover': {
-                                            transform: 'translateY(-5px)'
-                                        }
+                                        // ':hover': {
+                                        //     transform: 'translateY(-5px)'
+                                        // }
                                     }}
                                 >
                                     <div style={{
