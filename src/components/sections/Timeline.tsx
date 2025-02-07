@@ -10,12 +10,12 @@ type TimelineItem = {
 
 export const Timeline = ({ items }: { items: TimelineItem[] }) => {
     const timelineStyle = {
-        position: 'relative',
+        position: 'relative' as const,
         paddingLeft: '32px',
     };
 
     const lineStyle = {
-        position: 'absolute',
+        position: 'absolute' as const,
         left: '20px',
         top: 0,
         height: '100%',
@@ -25,7 +25,7 @@ export const Timeline = ({ items }: { items: TimelineItem[] }) => {
     };
 
     const dotStyle = {
-        position: 'absolute',
+        position: 'absolute' as const,
         left: '-6px',
         top: '4px',
         width: '16px',
@@ -45,7 +45,7 @@ export const Timeline = ({ items }: { items: TimelineItem[] }) => {
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     style={{
-                        position: 'relative',
+                        position: 'relative' as const,
                         paddingBottom: '32px',
                         paddingLeft: '48px',
                     }}
