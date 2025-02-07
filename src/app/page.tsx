@@ -396,9 +396,6 @@ export default function Home() {
                                         backgroundColor: '#ffffff',
                                         boxShadow: '0 10px 15px -3px rgba(0,0,0,0.05)',
                                         transition: 'transform 0.3s ease',
-                                        // ':hover': {
-                                        //     transform: 'translateY(-5px)'
-                                        // }
                                     }}
                                 >
                                     <div style={{
