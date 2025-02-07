@@ -39,24 +39,24 @@ export default function Home() {
                     // 容器样式
                     overflow: 'hidden',
                     isolation: 'isolate',
-                    '::before': {
-                        content: '""',
-                        position: 'absolute',
-                        top: 0,
-                        left: 0,
-                        right: 0,
-                        bottom: 0,
-                        zIndex: -1,
-                        background: `
-                linear-gradient(
-                    to bottom,
-                    rgba(0, 0, 0, 0.8) 0%,
-                    rgba(0, 0, 0, 0.6) 50%,
-                    rgba(0, 0, 0, 0.4) 100%
-                )`,
-                        backdropFilter: 'blur(4px)',
-                        WebkitBackdropFilter: 'blur(4px)'
-                    }
+                //     '::before': {
+                //         content: '""',
+                //         position: 'absolute',
+                //         top: 0,
+                //         left: 0,
+                //         right: 0,
+                //         bottom: 0,
+                //         zIndex: -1,
+                //         background: `
+                // linear-gradient(
+                //     to bottom,
+                //     rgba(0, 0, 0, 0.8) 0%,
+                //     rgba(0, 0, 0, 0.6) 50%,
+                //     rgba(0, 0, 0, 0.4) 100%
+                // )`,
+                //         backdropFilter: 'blur(4px)',
+                //         WebkitBackdropFilter: 'blur(4px)'
+                //     }
                 }}
             >
                 {/* 背景图片层 */}
@@ -207,35 +207,35 @@ export default function Home() {
         rgba(0, 0, 0, 1) 100%          // 纯黑（底部）
     )`,
                 padding: '4rem 2rem',
-                '::before': {
-                    content: '""',
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    right: 0,
-                    height: '200px',
-                    background: `linear-gradient(
-            to bottom,
-            rgba(15, 23, 42, 1) 0%,
-            rgba(15, 23, 42, 0) 100%
-        )`,
-                    zIndex: -1
-                },
-                '::after': {
-                    content: '""',
-                    position: 'absolute',
-                    bottom: 0,
-                    left: 0,
-                    right: 0,
-                    height: '200px',
-                    background: `linear-gradient(
-            to top,
-            rgba(0, 0, 0, 1) 0%,
-            rgba(0, 0, 0, 0) 100%
-        )`,
-                    zIndex: -1,
-                    isolation: 'isolate'
-                }
+        //         '::before': {
+        //             content: '""',
+        //             position: 'absolute',
+        //             top: 0,
+        //             left: 0,
+        //             right: 0,
+        //             height: '200px',
+        //             background: `linear-gradient(
+        //     to bottom,
+        //     rgba(15, 23, 42, 1) 0%,
+        //     rgba(15, 23, 42, 0) 100%
+        // )`,
+        //             zIndex: -1
+        //         },
+        //         '::after': {
+        //             content: '""',
+        //             position: 'absolute',
+        //             bottom: 0,
+        //             left: 0,
+        //             right: 0,
+        //             height: '200px',
+        //             background: `linear-gradient(
+        //     to top,
+        //     rgba(0, 0, 0, 1) 0%,
+        //     rgba(0, 0, 0, 0) 100%
+        // )`,
+        //             zIndex: -1,
+        //             isolation: 'isolate'
+        //         }
             }}>
                 {/* 核心内容区块 */}
                 <div style={{
