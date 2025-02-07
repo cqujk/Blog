@@ -398,10 +398,10 @@ export default function Home() {
                                         download: true
                                     }
                                 ]}
-                                style={{
-                                    border: '2px solid #3b82f6',
-                                    background: 'linear-gradient(to bottom right, #f8fafc, #e0f2fe)'
-                                }}
+                                // style={{
+                                //     border: '2px solid #3b82f6',
+                                //     background: 'linear-gradient(to bottom right, #f8fafc, #e0f2fe)'
+                                // }}
                             />
                         </div>
                     </section>
@@ -558,7 +558,7 @@ export default function Home() {
                                 //     e.target.style.backgroundColor = '#3b82f6'; // 恢复默认颜色
                                 // }}
                             >
-                                <option value="" disabled selected>选择邮箱地址</option>
+                                <option value="" disabled>选择邮箱地址</option>
                                 <option value="2686181617@qq.com">📧 2686181617@qq.com</option>
                                 <option value="20220669@stu.cqu.edu.cn">📧 20220669@stu.cqu.edu.cn</option>
                             </select>
