@@ -26,24 +26,6 @@ export default function Home() {
                     // 容器样式
                     overflow: 'hidden',
                     isolation: 'isolate',
-                //     '::before': {
-                //         content: '""',
-                //         position: 'absolute',
-                //         top: 0,
-                //         left: 0,
-                //         right: 0,
-                //         bottom: 0,
-                //         zIndex: -1,
-                //         background: `
-                // linear-gradient(
-                //     to bottom,
-                //     rgba(0, 0, 0, 0.8) 0%,
-                //     rgba(0, 0, 0, 0.6) 50%,
-                //     rgba(0, 0, 0, 0.4) 100%
-                // )`,
-                //         backdropFilter: 'blur(4px)',
-                //         WebkitBackdropFilter: 'blur(4px)'
-                //     }
                 }}
             >
                 {/* 背景图片层 */}
@@ -194,35 +176,6 @@ export default function Home() {
         rgba(0, 0, 0, 1) 100%          // 纯黑（底部）
     )`,
                 padding: '4rem 2rem',
-        //         '::before': {
-        //             content: '""',
-        //             position: 'absolute',
-        //             top: 0,
-        //             left: 0,
-        //             right: 0,
-        //             height: '200px',
-        //             background: `linear-gradient(
-        //     to bottom,
-        //     rgba(15, 23, 42, 1) 0%,
-        //     rgba(15, 23, 42, 0) 100%
-        // )`,
-        //             zIndex: -1
-        //         },
-        //         '::after': {
-        //             content: '""',
-        //             position: 'absolute',
-        //             bottom: 0,
-        //             left: 0,
-        //             right: 0,
-        //             height: '200px',
-        //             background: `linear-gradient(
-        //     to top,
-        //     rgba(0, 0, 0, 1) 0%,
-        //     rgba(0, 0, 0, 0) 100%
-        // )`,
-        //             zIndex: -1,
-        //             isolation: 'isolate'
-        //         }
             }}>
                 {/* 核心内容区块 */}
                 <div style={{
@@ -385,10 +338,6 @@ export default function Home() {
                                         download: true
                                     }
                                 ]}
-                                // style={{
-                                //     border: '2px solid #3b82f6',
-                                //     background: 'linear-gradient(to bottom right, #f8fafc, #e0f2fe)'
-                                // }}
                             />
                         </div>
                     </section>
@@ -533,17 +482,17 @@ export default function Home() {
                                     window.location.href = `mailto:${e.target.value}`;
                                 }}
                                 onMouseEnter={(e) => {
-                                    e.target.style.backgroundColor = '#4338ca'; // 悬停时颜色变深
+                                    const target = e.target as HTMLSelectElement;
+                                    if(target) {
+                                        target.style.backgroundColor = '#4338ca'; // 悬停时颜色变深
+                                    }
                                 }}
                                 onMouseLeave={(e) => {
-                                    e.target.style.backgroundColor = '#3b82f6'; // 恢复默认颜色
+                                    const target = e.target as HTMLSelectElement;
+                                    if(target) {
+                                        target.style.backgroundColor = '#3b82f6'; // 悬停时颜色变深
+                                    }
                                 }}
-                                // onMouseEnter={(e) => {
-                                //     e.target.style.backgroundColor = '#1d4ed8'; // 悬停时颜色变深
-                                // }}
-                                // onMouseLeave={(e) => {
-                                //     e.target.style.backgroundColor = '#3b82f6'; // 恢复默认颜色
-                                // }}
                             >
                                 <option value="" disabled>选择邮箱地址</option>
                                 <option value="2686181617@qq.com">📧 2686181617@qq.com</option>
