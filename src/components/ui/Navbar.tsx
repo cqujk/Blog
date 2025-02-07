@@ -2,7 +2,7 @@
 
 import { motion, useMotionValue, useTransform } from 'framer-motion';
 import { useState, useEffect } from 'react';
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
+// import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 
 // 导航栏项配置
 const navItems = [
@@ -22,14 +22,14 @@ const COLLAPSED_HEIGHT = 70; // 收缩后的高度
 const EXPANDED_BACKGROUND_IMAGE = 'url(/asset/image/background/light.jpg)';
 const COLLAPSED_BACKGROUND_IMAGE = 'url(/asset/image/background/dark.jpg)';
 // 在组件文件中添加生成随机颜色的函数
-function getRandomColor() {
-    const letters = '0123456789ABCDEF';
-    let color = '#';
-    for (let i = 0; i < 6; i++) {
-        color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
-}
+// function getRandomColor() {
+//     const letters = '0123456789ABCDEF';
+//     let color = '#';
+//     for (let i = 0; i < 6; i++) {
+//         color += letters[Math.floor(Math.random() * 16)];
+//     }
+//     return color;
+// }
 export default function Navbar() {
     const [isCollapsed, setIsCollapsed] = useState(false);
     const [dragConstraints, setDragConstraints] = useState({
@@ -146,18 +146,6 @@ export default function Navbar() {
                             borderRadius: '8px',
                             transition: 'all 0.3s ease',
                             position: 'relative',
-                            '::after': {
-                                content: '""',
-                                position: 'absolute',
-                                bottom: '-2px',
-                                left: '0',
-                                width: '100%',
-                                height: '2px',
-                                backgroundColor: '#4fd1c5', // 亮青色下划线
-                                transform: 'scaleX(0)',
-                                transition: 'transform 0.3s ease',
-                                transformOrigin: 'right'
-                            }
                         }}
                         onMouseEnter={(e) => {
                             const target = e.currentTarget;
@@ -165,11 +153,6 @@ export default function Navbar() {
                                 target.style.transform = 'translateY(-2px)';
                                 target.style.boxShadow = '0 4px 8px rgba(79, 209, 197, 0.2)';
                                 target.style.backgroundColor = 'rgba(79, 209, 197, 0.1)';
-                                const afterElement = target.querySelector('::after');
-                                if (afterElement) {
-                                    afterElement.style.transform = 'scaleX(1)';
-                                    afterElement.style.transformOrigin = 'left';
-                                }
                             }
                         }}
                         onMouseLeave={(e) => {
@@ -178,10 +161,6 @@ export default function Navbar() {
                                 target.style.transform = 'translateY(0)';
                                 target.style.boxShadow = 'none';
                                 target.style.backgroundColor = 'transparent';
-                                const afterElement = target.querySelector('::after');
-                                if (afterElement) {
-                                    afterElement.style.transform = 'scaleX(0)';
-                                }
                             }
                         }}
                     >
