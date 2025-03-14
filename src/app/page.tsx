@@ -223,7 +223,7 @@ export default function Home() {
                         marginRight: '8px',
                         fontSize: '1.2em'
                     }}>🏅</span>
-                                        学院TOP 0.09%
+                                        学院TOP 0.9%
                                     </li>
                                     <li style={{
                                         display: 'flex',
